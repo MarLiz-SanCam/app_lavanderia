@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
     final password = _passwordController.text;
 
     
-    if (username == 'some' && password == 'password') {
+    if (username == 'someone' && password == 'password') {
       
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Login exitoso')),
@@ -58,12 +58,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var colors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
       appBar: AppBar(
-        title: Text('LAUNDRY APP'),
+        backgroundColor: colors.accentuated,
+        title: Text('lavandería App'),
       ),
       body: Padding(
-        Color
+        
         padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
