@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:lavanderia_app/app_colors.dart';
 void main() {
   runApp(MyApp());
 }
@@ -8,9 +8,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Lavandería App',
+      theme: ThemeData.light().copyWith(
+        extensions: const[AppColors(
+          accentuated: Color(0xFF00FF00),
+          overlay: Color(0xFF0000FF),
+          hint: Color(0xFFFF0000),
+        )],
+        elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            backgroundColor: const Color(0xff257e2e),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+          ),)
       ),
       home: LoginPage(),
     );
@@ -26,14 +37,14 @@ class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _login() {
+  void _login() { // Función para iniciar sesión. 
+  //TODO: Agregar lógica de inicio de sesión aquí, esto es solo un ejemplo con un snackbar.
     final username = _usernameController.text;
     final password = _passwordController.text;
 
-    // Aquí puedes implementar la lógica de autenticación
-    // Por simplicidad, solo mostramos un mensaje
-    if (username == 'admin' && password == 'password') {
-      // Simula un inicio de sesión exitoso
+    
+    if (username == 'some' && password == 'password') {
+      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Login exitoso')),
       );
@@ -49,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('LAUNDRY APP'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
