@@ -11,14 +11,14 @@ class MyApp extends StatelessWidget {
       title: 'Lavandería App',
       theme: ThemeData.light().copyWith(
         extensions: const[AppColors(
-          accentuated: Color(0xFF00FF00),
-          overlay: Color(0xFF0000FF),
-          hint: Color(0xFFFF0000),
+          accentuated: Color(0xFFA06CD5),
+          overlay: Color(0xFFC19EE0),
+          hint: Color(0xFFDAC3E8),
         )],
         elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            backgroundColor: const Color(0xff257e2e),
+            backgroundColor: const Color(0xffA06CD5),
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
           ),)
@@ -63,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('LAUNDRY APP'),
       ),
       body: Padding(
+        Color
         padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
