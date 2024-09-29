@@ -45,7 +45,7 @@ class Sistema extends StatelessWidget {
                         //TODO: agreggar: Lógica para obtener clientes
                         return <String>[]; // Return an empty list for now
                       },
-                      formPageBuilder: () => AddClientsForm(),
+                      formPageBuilder: () => AddClientsForm(), itemBuilder: (item) { return Container(); },
                     ),
                   ),
                 );
@@ -65,7 +65,7 @@ class Sistema extends StatelessWidget {
                         //TODO: agregar: Lógica para obtener la lista de servicios
                         return <String>[]; // Return an empty list for now
                       },
-                        formPageBuilder: () => AddServiceForm(),
+                        formPageBuilder: () => AddServiceForm(), itemBuilder: (item) { return Container(); },
                     ),
                   ),
                 );
@@ -84,7 +84,7 @@ class Sistema extends StatelessWidget {
                         //TODO: agreggar: Lógica para obtener pedidos
                         return <String>[]; // Return an empty list for now
                       },
-                      formPageBuilder: () => AddOrderForm(),
+                      formPageBuilder: () => AddOrderForm(), itemBuilder: (item) { return Container(); },
                     ),
                   ),
                 );

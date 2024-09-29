@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//TODO: Importar las clases de datos, codificar en este archivo lo necesario para la lista de Clientes
 class AddClientsForm extends StatefulWidget {
   @override
   _AddClientsFormState createState() => _AddClientsFormState();
@@ -8,13 +8,13 @@ class AddClientsForm extends StatefulWidget {
 class _AddClientsFormState extends State<AddClientsForm> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
+  final _direccionController = TextEditingController();
   final _phoneController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
-    _emailController.dispose();
+    _direccionController.dispose();
     _phoneController.dispose();
     super.dispose();
   }
@@ -23,7 +23,7 @@ class _AddClientsFormState extends State<AddClientsForm> {
     if (_formKey.currentState!.validate()) {
       // Process data
       print('Name: ${_nameController.text}');
-      print('Email: ${_emailController.text}');
+      print('Email: ${_direccionController.text}');
       print('Phone: ${_phoneController.text}');
     }
   }
@@ -51,7 +51,7 @@ class _AddClientsFormState extends State<AddClientsForm> {
                 },
               ),
               TextFormField(
-                controller: _emailController,
+                controller: _direccionController,
                 decoration: InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {

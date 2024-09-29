@@ -1,5 +1,7 @@
 // ignore_for_file: unused_local_variable, library_private_types_in_public_api
-
+//TODO (marliz): Agregar lógica para obtener servicios, clientes y pedidos
+//TODO: agregar configuración a base de datos.
+//NOTE: REquiero corregir los archivos de cada opción de drawer para que cada opción tenga su propio tipo de lista
 import 'package:flutter/material.dart';
 import 'package:lavanderia_app/Design/app_colors.dart';
 import 'package:lavanderia_app/Pages/system_screen.dart';
@@ -15,18 +17,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lavandería App',
       theme: ThemeData.light().copyWith(
-        extensions: const[AppColors(
-          accentuated: Color(0xFFA06CD5),
-          overlay: Color(0xFFC19EE0),
-          hint: Color(0xFFDAC3E8),
-        )],
+        extensions: const[
+          AppColors(
+            accentuated: Color(0xFFA06CD5),
+            overlay: Color(0xFFC19EE0),
+            hint: Color(0xFFDAC3E8),
+          )
+        ],
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: const Color(0xffA06CD5), // Color de fondo
+          foregroundColor: Colors.white, // Color del icono
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0), // Bordes redondeados
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
             backgroundColor: const Color(0xffA06CD5),
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-          ),)
+          ),
+        ) 
       ),
       home: const LoginPage(),
     );
