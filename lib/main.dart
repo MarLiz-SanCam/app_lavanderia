@@ -46,9 +46,12 @@ class _LoginPageState extends State<LoginPage> {
   //TODO: Agregar lógica de inicio de sesión aquí, esto es solo un ejemplo con un snackbar.
     final username = _usernameController.text;
     final password = _passwordController.text;
-
-    
-    if (username == 'someone' && password == 'password') {
+    //todo: Comentar esto y descomentar el If de abajo para que funcione el login 
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Sistema()),
+      );
+   /*  if (username == 'someone' && password == 'password') {
       
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login exitoso')),
@@ -62,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Usuario o contraseña incorrectos')),
       );
-    }
+    } */
   }
 
   @override

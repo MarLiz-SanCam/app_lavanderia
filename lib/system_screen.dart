@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lavanderia_app/app_colors.dart';
 
 class Sistema extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var colors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
       appBar: AppBar(
         title: Text('Sistema de Lavandería'),
@@ -13,7 +15,7 @@ class Sistema extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: colors.accentuated,
               ),
               child: Text(
                 'Menú',
@@ -24,8 +26,8 @@ class Sistema extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Inicio'),
+                leading: Icon(Icons.person),
+              title: Text('Clientes'),
               onTap: () {
                 // Acción al presionar "Inicio"
               },
