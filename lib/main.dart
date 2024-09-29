@@ -1,8 +1,10 @@
+// ignore_for_file: unused_local_variable, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
-import 'package:lavanderia_app/app_colors.dart';
-import 'package:lavanderia_app/system_screen.dart';
+import 'package:lavanderia_app/Design/app_colors.dart';
+import 'package:lavanderia_app/Pages/system_screen.dart';
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
           ),)
       ),
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }
@@ -86,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
           controller: _usernameController,
           decoration: const InputDecoration(labelText: 'Usuario'),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         TextField(
           controller: _passwordController,
           decoration: const InputDecoration(labelText: 'Contraseña'),

@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:lavanderia_app/Design/app_colors.dart';
+import 'package:lavanderia_app/Design/generic_list_style.dart';
+import 'package:lavanderia_app/Pages/add_clients_form.dart';
+import 'package:lavanderia_app/Pages/add_order_form.dart';
+import 'package:lavanderia_app/Pages/add_service_form.dart';
 
 class Sistema extends StatelessWidget {
   @override
@@ -32,21 +36,58 @@ class Sistema extends StatelessWidget {
                 leading: const Icon(Icons.person),
               title: const Text('Clientes'),
               onTap: () {
-                //TODO: Agregar: Acción al presionar 
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GenericListPage(
+                      title: 'Clientes',
+                      fetchItems: () async {
+                        //TODO: agreggar: Lógica para obtener clientes
+                        return <String>[]; // Return an empty list for now
+                      },
+                      formPageBuilder: () => AddClientsForm(),
+                    ),
+                  ),
+                );
               },
+
             ),
             ListTile(
               leading: const Icon(Icons.local_laundry_service),
               title: const Text('Servicios'),
               onTap: () {
-                // TODO: Agregar: Acción al presionar
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GenericListPage(
+                      title: 'Servicios',
+                      fetchItems: () async {
+                        //TODO: agregar: Lógica para obtener la lista de servicios
+                        return <String>[]; // Return an empty list for now
+                      },
+                        formPageBuilder: () => AddServiceForm(),
+                    ),
+                  ),
+                );
               },
             ),
             ListTile(
               leading: const Icon(Icons.shopping_cart),
               title: const Text('Pedidos'),
               onTap: () {
-                //TODO: Agregar: Acción al presionar 
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GenericListPage(
+                      title: 'Pedidos',
+                      fetchItems: () async {
+                        //TODO: agreggar: Lógica para obtener pedidos
+                        return <String>[]; // Return an empty list for now
+                      },
+                      formPageBuilder: () => AddOrderForm(),
+                    ),
+                  ),
+                );
               },
             ),
           ],
