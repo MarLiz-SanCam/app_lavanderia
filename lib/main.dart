@@ -74,31 +74,32 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors.accentuated,
-        title: const Text('lavandería App'),
+        title: const Text('Bienvenid@'),
       ),
-      body: Padding(
-        
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(50.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(labelText: 'Usuario'),
-            ),
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(labelText: 'Contraseña'),
-              obscureText: true,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _login,
-              child: const Text('Iniciar Sesión'),
-            ),
+        TextField(
+          controller: _usernameController,
+          decoration: const InputDecoration(labelText: 'Usuario'),
+        ),
+        SizedBox(height: 20),
+        TextField(
+          controller: _passwordController,
+          decoration: const InputDecoration(labelText: 'Contraseña'),
+          obscureText: true,
+        ),
+        const SizedBox(height: 50),
+        ElevatedButton(
+          onPressed: _login,
+          child: const Text('Iniciar Sesión'),
+        ),
           ],
         ),
-      ),
+      )
     );
   }
 }

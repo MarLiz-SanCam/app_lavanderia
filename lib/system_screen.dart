@@ -7,7 +7,8 @@ class Sistema extends StatelessWidget {
     var colors = Theme.of(context).extension<AppColors>()!;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sistema de Lavandería'),
+        backgroundColor: colors.accentuated,
+        title: Text('Lavandería App'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -29,27 +30,28 @@ class Sistema extends StatelessWidget {
                 leading: Icon(Icons.person),
               title: Text('Clientes'),
               onTap: () {
-                // Acción al presionar "Inicio"
+                //TODO: Acción al presionar "Inicio"
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Configuración'),
+              leading: Icon(Icons.local_laundry_service),
+              title: Text('Servicios'),
               onTap: () {
-                // Acción al presionar "Configuración"
+                // TODO:Acción al presionar "Configuración"
               },
             ),
             ListTile(
-              leading: Icon(Icons.info),
-              title: Text('Acerca de'),
+              leading: Icon(Icons.shopping_cart),
+              title: Text('Pedidos'),
               onTap: () {
-                // Acción al presionar "Acerca de"
+                //TODO: Acción al presionar "Acerca de"
               },
             ),
           ],
         ),
       ),
       body: Center(
+        
         child: Text('Bienvenido al Sistema de Lavandería'),
       ),
     );
