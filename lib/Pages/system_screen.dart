@@ -1,7 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:lavanderia_app/app_colors.dart';
+import 'package:lavanderia_app/Design/app_colors.dart';
 
 class Sistema extends StatelessWidget {
   @override
