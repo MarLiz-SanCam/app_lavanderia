@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lavanderia_app/app_colors.dart';
+import 'package:lavanderia_app/system_screen.dart';
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,6 +32,8 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -46,12 +51,16 @@ class _LoginPageState extends State<LoginPage> {
     if (username == 'someone' && password == 'password') {
       
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login exitoso')),
+        const SnackBar(content: Text('Login exitoso')),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Sistema()),
       );
     } else {
       // Simula un error de inicio de sesión
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Usuario o contraseña incorrectos')),
+        const SnackBar(content: Text('Usuario o contraseña incorrectos')),
       );
     }
   }
@@ -62,27 +71,27 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: colors.accentuated,
-        title: Text('lavandería App'),
+        title: const Text('lavandería App'),
       ),
       body: Padding(
         
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Usuario'),
+              decoration: const InputDecoration(labelText: 'Usuario'),
             ),
             TextField(
               controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Contraseña'),
+              decoration: const InputDecoration(labelText: 'Contraseña'),
               obscureText: true,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _login,
-              child: Text('Iniciar Sesión'),
+              child: const Text('Iniciar Sesión'),
             ),
           ],
         ),
