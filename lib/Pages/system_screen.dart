@@ -93,84 +93,65 @@ class Sistema extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: GridView.builder(
-          padding: const EdgeInsets.all(20.0),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 20.0,
-            mainAxisSpacing: 20.0,
-          ),
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            /*         TODO: Asignar un ícono diferente según la condición
-            switch (index % 3) { // Cambia la condición según tu lógica
-              case 0:
-                iconData = Icons.star;
-                break;
-              case 1:
-                iconData = Icons.favorite;
-                break;
-              case 2:
-                iconData = Icons.thumb_up;
-                break;
-              default:
-                iconData = Icons.help; // Un ícono por defecto
-            } */
-              return Card(
-                color: Colors.white,
-                elevation: 10,
-                margin: const EdgeInsets.all(8),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          //TODO: volver los íconos dinámicos
-                          const Icon(Icons.star, size: 24), // Ícono
-                          const SizedBox(width: 8), // Espacio entre el ícono y el título
-                          Text(
-                            'Pedido $index',
-                            style: const TextStyle(fontSize: 18),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 16), // Espacio entre el título y los botones
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              // Acción para el primer botón
-                            },
-                            child: const Text('Botón 1'),
-                          ),
-                          const SizedBox(height: 8), // Espacio entre los botones
-                          ElevatedButton(
-                            onPressed: () {
-                              // Acción para el segundo botón
-                            },
-                            child: const Text('Botón 2'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            })
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //TODO: Agregar acción: crear nuevo pedido
-          // Acción al presionar el botón
-        },
-        backgroundColor: colors.accentuated,
-        child: const Icon(Icons.add),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Programación de base de datos',
+              style: TextStyle(fontSize: 24),
+            ),
+            const Text(
+              'App Lavandería',
+              style: TextStyle(fontSize: 20),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MenuItem(icon:Icons.person, label: "Clientes", destination: AddClientsForm()), 
+                MenuItem(icon:Icons.local_laundry_service, label: "Servicios", destination: AddServiceForm()),
+                MenuItem(icon:Icons.shopping_cart, label: "Pedidos", destination: AddOrderForm()),
+              ],
+            )
+          ],
+        ),
       ), 
     );
   }
+}
+
+class MenuItem extends StatelessWidget {  
+
+  final IconData icon;   
+  final String label;   
+  final Widget destination;  
+
+  MenuItem({required this.icon, required this.label, required this.destination});   
+  @override   Widget build(BuildContext context) {
+      return GestureDetector(   
+        onTap: () {        
+          Navigator.push(           
+            context,           
+            MaterialPageRoute(builder: (context) => destination),        
+          );       
+        },       
+        child: Card(     
+          color: Colors.white,    
+          margin: EdgeInsets.all(10),         
+          child: Padding(           
+            padding: const EdgeInsets.all(20.0),           
+            child: Column(             
+              mainAxisSize: MainAxisSize.min,             
+              children: [               
+                Icon(icon, size: 40),              
+                SizedBox(height: 10),               
+                Text(label, style: TextStyle(fontSize: 20)),             
+                ],
+            ),         
+         ),      
+      ),    
+    );   
+  } 
 }

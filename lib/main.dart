@@ -1,13 +1,23 @@
 // ignore_for_file: unused_local_variable, library_private_types_in_public_api
-//TODO (marliz): Agregar lógica para obtener servicios, clientes y pedidos
-//TODO: agregar configuración a base de datos.
-//NOTE: REquiero corregir los archivos de cada opción de drawer para que cada opción tenga su propio tipo de lista
 import 'package:flutter/material.dart';
 import 'package:lavanderia_app/Design/app_colors.dart';
+import 'package:mysql1/mysql1.dart';
 import 'package:lavanderia_app/Pages/system_screen.dart';
 void main() {
   runApp(const MyApp());
 }
+
+Future<MySqlConnection> getConnection() async {
+  var settings = ConnectionSettings(
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'root',
+    db: 'lavanderia_pbd',
+  );
+  return await MySqlConnection.connect(settings);
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

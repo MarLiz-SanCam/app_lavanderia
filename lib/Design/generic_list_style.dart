@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//FIXME: eliminar esta página generica para las listas y agregar una específica para cada una.
+//FIXME(marliz): eliminar esta página generica para las listas y agregar una específica para cada una.
 // Clases de datos
 //DEPRECATED: I´m not using this anymore - Cambiar mañana por las opciones correctas para la funcionalidad requerida
 class Client {
