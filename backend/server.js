@@ -1,8 +1,10 @@
 const express = require('express');
-const app = express();
+const cors = require('cors');
 const mysql = require('mysql2');
+const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -13,35 +15,42 @@ const db = mysql.createConnection({
 });
 
 db.connect((err) => {
-    if(err){
+    if (err) {
         console.error('Error al conectar a la BD ', err);
+        return;
     }
     console.log('Conectado a la BD!');
 });
 
 app.post('/api/gestionar-usuarios', (req, res) => {
-    const {p_opcion, p_id_usuario, p_nombre_usuario, p_password } = req.body;
+    const { p_opcion, p_nombre_usuario, p_password } = req.body;
 
-    let p_valid = 0;
+    // Declarar variables de salida para el procedimiento
+    let p_valid = 0; // Inicializamos como 0
     let p_error = '';
     let p_fecha_sistema = null;
 
-    db.query('CALL sp_gestionar_usuarios(?, ?, ?, ?, ?, ?, ?)',
-         [p_opcion, p_id_usuario, p_nombre_usuario, p_password, p_valid, p_error, p_fecha_sistema], 
-         (err, result) => {
-            if(err){
-                return res.status(500).json({error: 'Error al ejecutar el procedimiento almacenado', details: err});
+    // Llamar al procedimiento almacenado
+    db.query('CALL gestionar_usuarios(?, @p_valid, @p_error, NULL, ?, ?, @p_fecha_sistema)', 
+        [p_opcion, p_nombre_usuario, p_password], 
+        (err) => {
+            if (err) {
+                console.error('Error al ejecutar el procedimiento almacenado', err);
+                return res.status(500).json({ error: 'Error interno del servidor', details: err });
             }
-            if (p_opcion == 4){
-                res.json(results[0]);
-            }else{
+
+            // Recuperar los valores de los parámetros de salida
+            db.query('SELECT @p_valid AS p_valid, @p_error AS p_error, @p_fecha_sistema AS p_fecha_sistema', (err, output) => {
+                if (err) {
+                    console.error('Error al recuperar parámetros de salida', err);
+                    return res.status(500).json({ error: 'Error interno del servidor', details: err });
+                }
                 res.json({
-                    p_valid: p_valid,
-                    p_error: p_error,
-                    p_id_usuario: p_id_usuario,
-                    p_fecha_sistema: p_fecha_sistema
-                 });
-            }
+                    p_valid: output[0].p_valid,
+                    p_error: output[0].p_error,
+                    p_fecha_sistema: output[0].p_fecha_sistema
+                });
+            });
         }
     );
 });

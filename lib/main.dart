@@ -1,7 +1,6 @@
 // ignore_for_file: unused_local_variable, library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:lavanderia_app/Design/app_colors.dart';
-// import 'package:mysql1/mysql1.dart';
 import 'package:lavanderia_app/Pages/system_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -64,11 +63,10 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://localhost:3000/api/gestionar-usuarios'),
+        Uri.parse('http://127.0.0.1:3000/api/gestionar-usuarios'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'p_opcion': 5, // p_opcion (validación de login)
-          'p_id_usuario': null, // p_id_usuario (entrada/salida)
           'p_nombre_usuario': username,
           'p_password': password,
         }),
